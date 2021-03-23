@@ -20,6 +20,7 @@
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		BE858712127429ED1D6B0077 /* libPods-stockViewerApp-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AFDB25603AC716BE088769EC /* libPods-stockViewerApp-tvOSTests.a */; };
 		CB02C33219C7AF75699D51B4 /* libPods-stockViewerApp-stockViewerAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC2A9E64A5E771D59E7631D0 /* libPods-stockViewerApp-stockViewerAppTests.a */; };
+		EF40E6EA2609F83A00E81251 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF40E6E92609F83A00E81251 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +48,7 @@
 		118C3D76455F344D8F4A2AED /* libPods-stockViewerApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-stockViewerApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		11C7E68186F37CED096F3072 /* Pods-stockViewerApp-stockViewerAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stockViewerApp-stockViewerAppTests.debug.xcconfig"; path = "Target Support Files/Pods-stockViewerApp-stockViewerAppTests/Pods-stockViewerApp-stockViewerAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		122F2934993535D09278039C /* Pods-stockViewerApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stockViewerApp.debug.xcconfig"; path = "Target Support Files/Pods-stockViewerApp/Pods-stockViewerApp.debug.xcconfig"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* stockViewerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = stockViewerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07F961A680F5B00A75B9A /* stockViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = stockViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = stockViewerApp/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = stockViewerApp/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = stockViewerApp/Images.xcassets; sourceTree = "<group>"; };
@@ -67,6 +68,7 @@
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		EF40E6E82609E62400E81251 /* stockViewerApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = stockViewerApp.entitlements; path = stockViewerApp/stockViewerApp.entitlements; sourceTree = "<group>"; };
+		EF40E6E92609F83A00E81251 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F0C54DEB6C417FFA3225C8B9 /* libPods-stockViewerApp-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-stockViewerApp-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -126,6 +128,7 @@
 		13B07FAE1A68108700A75B9A /* stockViewerApp */ = {
 			isa = PBXGroup;
 			children = (
+				EF40E6E92609F83A00E81251 /* GoogleService-Info.plist */,
 				EF40E6E82609E62400E81251 /* stockViewerApp.entitlements */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -191,7 +194,7 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* stockViewerApp.app */,
+				13B07F961A680F5B00A75B9A /* stockViewer.app */,
 				00E356EE1AD99517003FC87E /* stockViewerAppTests.xctest */,
 				2D02E47B1E0B4A5D006451C7 /* stockViewerApp-tvOS.app */,
 				2D02E4901E0B4A5D006451C7 /* stockViewerApp-tvOSTests.xctest */,
@@ -240,7 +243,7 @@
 			);
 			name = stockViewerApp;
 			productName = stockViewerApp;
-			productReference = 13B07F961A680F5B00A75B9A /* stockViewerApp.app */;
+			productReference = 13B07F961A680F5B00A75B9A /* stockViewer.app */;
 			productType = "com.apple.product-type.application";
 		};
 		2D02E47A1E0B4A5D006451C7 /* stockViewerApp-tvOS */ = {
@@ -343,6 +346,7 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				EF40E6EA2609F83A00E81251 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,10 +491,12 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-stockViewerApp-stockViewerAppTests/Pods-stockViewerApp-stockViewerAppTests-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -505,10 +511,12 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-stockViewerApp/Pods-stockViewerApp-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -666,8 +674,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = stockViewerApp;
+				PRODUCT_BUNDLE_IDENTIFIER = org.jazapp.stockViewer;
+				PRODUCT_NAME = stockViewer;
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -691,8 +699,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = stockViewerApp;
+				PRODUCT_BUNDLE_IDENTIFIER = org.jazapp.stockViewer;
+				PRODUCT_NAME = stockViewer;
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

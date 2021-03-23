@@ -1,10 +1,14 @@
 import React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import { Text, View, StyleSheet, Button } from 'react-native';
+import { useDispatch } from 'react-redux';
+import { logout } from '../../redux/authSlice';
 
 const Home = () => {
+  const dispatch = useDispatch();
   return (
     <View style={styles.container}>
       <Text>Home</Text>
+      <Button title={'Log out'} onPress={() => dispatch(logout())} />
     </View>
   );
 };

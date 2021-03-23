@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "411269001824",
+    "project_id": "stockviewerapp-fad68",
+    "storage_bucket": "stockviewerapp-fad68.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:411269001824:android:6424cbb1fd1d4c61678905",
+        "android_client_info": {
+          "package_name": "com.stockviewerapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "411269001824-i8usujop4d24ahaj4boaln5r1o3pct85.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBg12zq5BWiRsT2nBfS7k9ccHnN6_Mrlp0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "411269001824-i8usujop4d24ahaj4boaln5r1o3pct85.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "411269001824-tuvq26hvti106evvcmsthq3j5dljp8g8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.jazapp.stockViewer"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

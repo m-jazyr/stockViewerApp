@@ -15,7 +15,8 @@
     "react": "16.13.1",
     "react-native": "0.63.4",
     "react-native-google-signin": "^2.1.1",
-    "react-redux": "^7.2.3"
+    "react-redux": "^7.2.3",
+    "rn-local-authentication": "^1.2.5"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",

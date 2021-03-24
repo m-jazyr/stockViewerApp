@@ -1,26 +1,25 @@
 import React, { useEffect } from 'react';
 import LocalAuthentication from 'rn-local-authentication';
+import { strings } from '../../assets/strings';
 
-const BiometricPopup = ({ onAuthenticate, handlePopupDismissed }) => {
+const BiometricPopup = ({ onAuthenticate, handlePopupDismissed, type }) => {
   const showPopUp = () => {
     LocalAuthentication.authenticateAsync({
-      reason: 'string',
+      reason: strings.loginDesc.replace('$type', type),
       fallbackEnabled: true,
-      fallbackTitle: 'Use Pattern',
       fallbackToPinCodeAction: true,
-      cancelTitle: 'Cancel',
-      title: 'Use Biometrics',
+      cancelTitle: strings.cancel,
+      title: strings.unlockApp,
     })
       .then((response) => {
         if (response.success) {
           onAuthenticate();
-          console.log('Authorized successfully!');
         } else {
           handlePopupDismissed();
-          console.log(`Something went wrong. Error: ${response.error}`);
+          console.log(response.error);
         }
       })
-      .catch((err) => console.log(JSON.stringify(err)));
+      .catch((err) => console.log(err));
   };
 
   useEffect(() => {

@@ -1,12 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {
-  Text,
-  View,
-  StyleSheet,
-  Image,
-  SafeAreaView,
-  Platform,
-} from 'react-native';
+import { Text, View, StyleSheet, Image, SafeAreaView } from 'react-native';
 import { useDispatch } from 'react-redux';
 import LocalAuthentication from 'rn-local-authentication';
 import { colors } from '../../assets/colors';
@@ -68,38 +61,51 @@ const Biometric = () => {
   useEffect(() => {
     checkBiometrics();
   }, []);
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.topPart}>
-        <Image
-          source={type.icon}
-          style={styles.faceId}
-          resizeMode={'contain'}
-        />
-        <View style={styles.descContainer}>
-          <Text style={styles.descTitle1}>{`Login with ${type.title}`}</Text>
-          <Text
-            style={
-              styles.descTitle2
-            }>{`Use your ${type.title} for faster, easier access to sign in`}</Text>
-        </View>
+        {!showContinue ? (
+          <>
+            <Image
+              source={type.icon}
+              style={styles.faceId}
+              resizeMode={'contain'}
+            />
+            <View style={styles.descContainer}>
+              <Text style={styles.descTitle1}>
+                {strings.loginWith.replace('$type', type.title)}
+              </Text>
+              <Text style={styles.descTitle2}>
+                {strings.loginDesc.replace('$type', type.title)}
+              </Text>
+            </View>
+          </>
+        ) : (
+          <Image
+            source={images.success}
+            style={styles.faceId}
+            resizeMode={'contain'}
+          />
+        )}
       </View>
       <View>
         {showPopup && (
           <BiometricPopup
+            type={type.title}
             onAuthenticate={() => closePopup()}
             handlePopupDismissed={() => setShowPopup(false)}
           />
         )}
         {showContinue ? (
-          <PrimaryButton title={'Continue'} action={unlockDevice} />
+          <PrimaryButton title={strings.continue} action={unlockDevice} />
         ) : (
           <>
             <PrimaryButton
               title={`Use ${type.title}`}
               action={() => setShowPopup(true)}
             />
-            <PrimaryButton title={'Not Now'} action={goBack} isNegative />
+            <PrimaryButton title={strings.notNow} action={goBack} isNegative />
           </>
         )}
       </View>

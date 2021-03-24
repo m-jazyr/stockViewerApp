@@ -4,12 +4,12 @@ import { GoogleSignin, statusCodes } from 'react-native-google-signin';
 import { colors } from '../../assets/colors';
 import { images } from '../../assets/images';
 import { strings } from '../../assets/strings';
+import { GOOGLE_WEB_CLIENT_ID } from '../../utils/constants';
 
 const GoogleLogin = ({ onSuccess, onFailure }) => {
   const googleConfig = () => {
     GoogleSignin.configure({
-      webClientId:
-        '411269001824-i8usujop4d24ahaj4boaln5r1o3pct85.apps.googleusercontent.com',
+      webClientId: GOOGLE_WEB_CLIENT_ID,
       offlineAccess: true,
     });
   };

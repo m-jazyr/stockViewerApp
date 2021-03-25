@@ -4,9 +4,8 @@ import WebView from 'react-native-webview';
 import { getFinancialItem } from '../../api/stockData';
 import { ALPHAVANTAGE_TYPES } from '../../utils/constants';
 
-const WEBB = () => {
+const ChartPage = () => {
   const webviewRef = React.useRef(null);
-  let stockData = [];
   const [showChart, setShowChart] = useState(false);
   const [chartData, setChartdata] = useState([]);
 
@@ -32,8 +31,8 @@ const WEBB = () => {
   }
   let source =
     Platform.OS === 'ios'
-      ? require('./sample.html')
-      : { uri: 'file:///android_asset/index.html' };
+      ? require('./stockChart.html')
+      : { uri: 'file:///android_asset/stockChart.html' };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -62,4 +61,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default WEBB;
+export default ChartPage;

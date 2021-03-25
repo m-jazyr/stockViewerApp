@@ -6,8 +6,7 @@ import {
 } from '../utils/constants';
 
 export const getFinancialItem = async (symbol, type) => {
-  //   let url = `${ALPHAVANTAGE_BASE_URL}/query?function=${type}&interval=15min&symbol=${symbol}&outputsize=full&apikey=${ALPHAVANTAGE_API_KEY}`;
-  let url = `${ALPHAVANTAGE_BASE_URL}/query?function=${type}&symbol=${symbol}&apikey=${ALPHAVANTAGE_API_KEY}&outputsize=compact&interval=1min`;
+  let url = `${ALPHAVANTAGE_BASE_URL}/query?function=${type}&symbol=${symbol}&apikey=${ALPHAVANTAGE_API_KEY}&outputsize=full&interval=1min`;
 
   const createTickerChart = (data) => {
     var tickerData = [];
@@ -25,23 +24,33 @@ export const getFinancialItem = async (symbol, type) => {
   };
 
   const toDate = (dateStr) => {
-    // var proper = moment(dateStr).format('YYYY-MM-DD  hh:mm:ss')
     const format =
       type == ALPHAVANTAGE_TYPES.INTRADAY
         ? 'YYYY-MM-DD  hh:mm:ss'
         : 'YYYY-MM-DD';
     const someDate = moment(dateStr, format).valueOf();
-    console.log(dateStr,someDate);
     return someDate;
   };
 
   const response = await fetch(url);
   const data = await response.json();
-  console.log(data);
-    // const stockData = createTickerChart(data["Time Series (1min)"])
-  //   const stockData = createTickerChart(data["Time Series (Daily)"])
-    const stockData = createTickerChart(data["Monthly Time Series"])
-  //   Weekly Time Series
-  // Monthly Time Series
+  let responseType = '';
+  switch (type) {
+    case ALPHAVANTAGE_TYPES.INTRADAY:
+      responseType = 'Time Series (1min)';
+      break;
+    case ALPHAVANTAGE_TYPES.DAILY:
+      responseType = 'Time Series (Daily)';
+      break;
+    case ALPHAVANTAGE_TYPES.WEEKLY:
+      responseType = 'Weekly Time Series';
+      break;
+    case ALPHAVANTAGE_TYPES.MONTHLY:
+      responseType = 'Monthly Time Series';
+      break;
+    default:
+      break;
+  }
+  const stockData = createTickerChart(data[responseType]);
   return stockData;
 };

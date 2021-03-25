@@ -1,11 +1,11 @@
 import React from 'react';
-import { Text, View, StyleSheet, Button } from 'react-native';
+import { View, StyleSheet, Button } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../redux/authSlice';
 import { removeValue } from '../../utils/asyncStorage';
 import { USER_KEY } from '../../utils/constants';
 
-const Home = () => {
+const Home = ({ navigation }) => {
   const dispatch = useDispatch();
   const onLogout = async () => {
     await removeValue(USER_KEY);
@@ -13,7 +13,7 @@ const Home = () => {
   };
   return (
     <View style={styles.container}>
-      <Text>Home</Text>
+      <Button title={'Chart'} onPress={() => navigation.navigate('Chart')} />
       <Button title={'Log out'} onPress={onLogout} />
     </View>
   );

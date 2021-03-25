@@ -24,30 +24,28 @@
         },
 
         rangeSelector: {
-          buttons: [
-            {
-              type: 'day',
-              count: 1,
-              text: '1D',
-            },
-            {
-              type: 'month',
-              count: 1,
-              text: '1m',
-            },
-            {
-              type: 'year',
-              count: 1,
-              text: '1y',
-            },
-            {
-              type: 'all',
-              text: 'All',
-              title: 'View all'
-            }
-          ],
+          buttons: [{
+            type: 'day',
+            count: 1,
+            text: '1D'
+          }, {
+            type: 'week',
+            count: 1,
+            text: '1w'
+          }, {
+            type: 'month',
+            count: 1,
+            text: '1m'
+          }, {
+            type: 'year',
+            count: 1,
+            text: '1y'
+          }, {
+            type: 'all',
+            text: 'All'
+          }],
           selected: 1,
-          inputEnabled: false,
+          inputEnabled: false
         },
 
         series: [

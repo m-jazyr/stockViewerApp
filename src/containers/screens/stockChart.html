@@ -9,7 +9,6 @@
   <script src="https://code.highcharts.com/stock/modules/data.js"></script>
   <script>
     window.addEventListener('message', function (stockData) {
-      alert(stockData.data)
       Highcharts.stockChart('container', {
         title: {
           text: 'AAPL stock price by minute',
@@ -24,6 +23,9 @@
         },
 
         rangeSelector: {
+          buttonPosition: {
+            align: 'right'
+          },
           buttons: [{
             type: 'day',
             count: 1,

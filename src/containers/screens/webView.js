@@ -1,10 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { Text, StyleSheet, SafeAreaView } from 'react-native';
+import {
+  Text,
+  StyleSheet,
+  SafeAreaView,
+  Image,
+  Platform,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import WebView from 'react-native-webview';
 import { getFinancialItem } from '../../api/stockData';
 import { ALPHAVANTAGE_TYPES } from '../../utils/constants';
+import { colors } from '../../assets/colors';
+import { aapl } from './aapl';
+import { images } from '../../assets/images';
 
-const ChartPage = () => {
+const ChartPage = ({ navigation }) => {
   const webviewRef = React.useRef(null);
   const [showChart, setShowChart] = useState(false);
   const [chartData, setChartdata] = useState([]);
@@ -37,17 +48,28 @@ const ChartPage = () => {
   return (
     <SafeAreaView style={styles.container}>
       {showChart ? (
-        <WebView
-          source={source}
-          javaScriptEnabled
-          startInLoadingState={true}
-          ref={webviewRef}
-          onMessage={onMessage}
-          originWhitelist={['*']}
-          onLoad={() =>
-            webviewRef.current.postMessage(JSON.stringify(chartData))
-          }
-        />
+        <>
+          <TouchableOpacity
+            style={styles.backArrow}
+            onPress={() => navigation.goBack()}>
+            <Image
+              source={images.back}
+              style={styles.backArrowImage}
+              resizeMode="contain"
+            />
+          </TouchableOpacity>
+
+          <WebView
+            source={source}
+            javaScriptEnabled
+            startInLoadingState={true}
+            ref={webviewRef}
+            onMessage={onMessage}
+            scrollEnabled={false}
+            originWhitelist={['*']}
+            onLoad={() => webviewRef.current.postMessage(JSON.stringify(chartData))}
+          />
+        </>
       ) : (
         <Text>Loading...</Text>
       )}
@@ -58,6 +80,23 @@ const ChartPage = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingVertical: 32,
+    backgroundColor: colors.white,
+  },
+  backArrow: {
+    position: 'absolute',
+    zIndex: 10,
+    top: Platform.OS == 'ios' ? 16 : 40,
+    left: 16,
+    height: 30,
+    width: 30,
+    backgroundColor: colors.transparent,
+    borderRadius: 15,
+    elevation: 10,
+  },
+  backArrowImage: {
+    height: 30,
+    width: 30,
   },
 });
 

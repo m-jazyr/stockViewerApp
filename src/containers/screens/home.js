@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Button, Icon } from 'react-native-elements';
 import { useDispatch } from 'react-redux';
+import VoiceNative from '../../components/voiceRec';
 import { logout } from '../../redux/authSlice';
 import { removeValue } from '../../utils/asyncStorage';
 import { USER_KEY } from '../../utils/constants';
@@ -24,6 +25,7 @@ const Home = ({ navigation }) => {
         title={' Search Symbols'}
         onPress={() => navigation.navigate('Search')}
       />
+      <VoiceNative navigation={navigation} />
     </View>
   );
 };

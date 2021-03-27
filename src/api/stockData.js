@@ -25,7 +25,7 @@ export const getFinancialItem = async (symbol, type) => {
 
   const toDate = (dateStr) => {
     const format =
-      type == ALPHAVANTAGE_TYPES.INTRADAY
+      type === ALPHAVANTAGE_TYPES.INTRADAY
         ? 'YYYY-MM-DD  hh:mm:ss'
         : 'YYYY-MM-DD';
     const someDate = moment(dateStr, format).valueOf();

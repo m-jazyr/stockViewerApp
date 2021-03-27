@@ -17,6 +17,7 @@ const ChartPage = ({ navigation, route }) => {
   const { symbol } = route.params;
 
   const fetchData = () => {
+    console.log(symbol);
     getFinancialItem(symbol, ALPHAVANTAGE_TYPES.MONTHLY).then((result) => {
       setChartdata(result);
       setShowChart(true);

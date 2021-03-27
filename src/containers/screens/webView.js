@@ -1,28 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import {
-  Text,
   StyleSheet,
   SafeAreaView,
-  Image,
   Platform,
-  TouchableOpacity,
-  View,
+  ActivityIndicator,
 } from 'react-native';
 import WebView from 'react-native-webview';
 import { getFinancialItem } from '../../api/stockData';
 import { ALPHAVANTAGE_TYPES } from '../../utils/constants';
 import { colors } from '../../assets/colors';
-import { aapl } from './aapl';
-import { images } from '../../assets/images';
 
-const ChartPage = ({ navigation }) => {
+const ChartPage = ({ navigation, route }) => {
   const webviewRef = React.useRef(null);
   const [showChart, setShowChart] = useState(false);
   const [chartData, setChartdata] = useState([]);
+  const { symbol } = route.params;
 
   const fetchData = () => {
-    getFinancialItem('IBM', ALPHAVANTAGE_TYPES.MONTHLY).then((result) => {
-      stockData = result;
+    getFinancialItem(symbol, ALPHAVANTAGE_TYPES.MONTHLY).then((result) => {
       setChartdata(result);
       setShowChart(true);
     });
@@ -31,11 +26,6 @@ const ChartPage = ({ navigation }) => {
   useEffect(() => {
     fetchData();
   }, []);
-
-  const runFirst = `
-    document.body.style.backgroundColor = 'green';
-      true; // note: this is required, or you'll sometimes get silent failures
-    `;
 
   function onMessage(datas) {
     console.log(datas);
@@ -48,30 +38,24 @@ const ChartPage = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       {showChart ? (
-        <>
-          <TouchableOpacity
-            style={styles.backArrow}
-            onPress={() => navigation.goBack()}>
-            <Image
-              source={images.back}
-              style={styles.backArrowImage}
-              resizeMode="contain"
-            />
-          </TouchableOpacity>
-
-          <WebView
-            source={source}
-            javaScriptEnabled
-            startInLoadingState={true}
-            ref={webviewRef}
-            onMessage={onMessage}
-            scrollEnabled={false}
-            originWhitelist={['*']}
-            onLoad={() => webviewRef.current.postMessage(JSON.stringify(chartData))}
-          />
-        </>
+        <WebView
+          source={source}
+          javaScriptEnabled
+          startInLoadingState={true}
+          ref={webviewRef}
+          onMessage={onMessage}
+          scrollEnabled={false}
+          originWhitelist={['*']}
+          onLoad={() => {
+            const data = {
+              symbol,
+              chartData,
+            };
+            webviewRef.current.postMessage(JSON.stringify(data));
+          }}
+        />
       ) : (
-        <Text>Loading...</Text>
+        <ActivityIndicator animating style={styles.loader} />
       )}
     </SafeAreaView>
   );
@@ -81,22 +65,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingVertical: 32,
+    justifyContent: 'center',
     backgroundColor: colors.white,
   },
-  backArrow: {
-    position: 'absolute',
-    zIndex: 10,
-    top: Platform.OS == 'ios' ? 16 : 40,
-    left: 16,
-    height: 30,
-    width: 30,
-    backgroundColor: colors.transparent,
-    borderRadius: 15,
-    elevation: 10,
-  },
-  backArrowImage: {
-    height: 30,
-    width: 30,
+  loader: {
+    alignSelf: 'center',
   },
 });
 

@@ -1,5 +1,8 @@
 import * as React from 'react';
-import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
+import {
+  createStackNavigator,
+  CardStyleInterpolators,
+} from '@react-navigation/stack';
 import ChartPage from '../containers/screens/webView';
 import Home from '../containers/screens/home';
 import Search from '../containers/screens/search';
@@ -10,7 +13,6 @@ const MainNavigator = () => {
   return (
     <>
       <Stack.Navigator
-      // headerMode={'none'}
         screenOptions={{
           cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
         }}>

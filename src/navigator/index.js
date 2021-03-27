@@ -23,8 +23,7 @@ const Navigator = () => {
 
   return (
     <NavigationContainer>
-      {/* {userToken ? unlocked ? <Home /> : <MainNavigator /> : <Login />}; */}
-      <MainNavigator />
+      {userToken ? unlocked ? <MainNavigator /> : <Biometric /> : <Login />}
     </NavigationContainer>
   );
 };

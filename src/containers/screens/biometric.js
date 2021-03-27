@@ -36,25 +36,27 @@ const Biometric = () => {
   const checkBiometrics = async () => {
     const support = await LocalAuthentication.isSupportedAsync();
     const available = await LocalAuthentication.isAvailableAsync();
-    if (!support || !available) return;
+    if (!support || !available) {
+      return;
+    }
     if (LocalAuthentication.getBiometryType() === 'FaceID') {
-      const type = {
+      const bType = {
         title: strings.faceID,
         icon: images.faceId,
       };
-      changeType(type);
+      changeType(bType);
     } else if (LocalAuthentication.getBiometryType() === 'TouchID') {
-      const type = {
+      const bType = {
         title: strings.touchID,
         icon: images.touchId,
       };
-      changeType(type);
+      changeType(bType);
     } else {
-      const type = {
+      const bType = {
         title: strings.deviceLock,
         icon: images.user,
       };
-      changeType(type);
+      changeType(bType);
     }
   };
 

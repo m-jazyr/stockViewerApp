@@ -24,5 +24,5 @@ const authSlice = createSlice({
 
 export const authSelector = (state) => state.auth;
 const { actions, reducer } = authSlice;
-export const { logout, login,unlock } = actions;
+export const { logout, login, unlock } = actions;
 export default reducer;

@@ -1,15 +1,7 @@
-import React, { useState } from 'react';
-import {
-  View,
-  StyleSheet,
-  Button,
-  TextInput,
-  Text,
-  FlatList,
-} from 'react-native';
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import { Button, Icon } from 'react-native-elements';
 import { useDispatch } from 'react-redux';
-import { getSymbols } from '../../api/searchSymbol';
-import { colors } from '../../assets/colors';
 import { logout } from '../../redux/authSlice';
 import { removeValue } from '../../utils/asyncStorage';
 import { USER_KEY } from '../../utils/constants';
@@ -20,13 +12,18 @@ const Home = ({ navigation }) => {
     await removeValue(USER_KEY);
     dispatch(logout());
   };
-  
+
   return (
     <View style={styles.container}>
-      <Button title={'Chart'} onPress={() => navigation.navigate('Chart')} />
-      <Button title={'Log out'} onPress={onLogout} />
-      <Button title={'Search'} onPress={() => navigation.navigate('Search')} />
-      
+      <Text style={styles.logout} onPress={onLogout}>
+        Log out
+      </Text>
+      <Button
+        icon={<Icon name="search" size={24} color="white" />}
+        containerStyle={styles.btnContainer}
+        title={' Search Symbols'}
+        onPress={() => navigation.navigate('Search')}
+      />
     </View>
   );
 };
@@ -37,6 +34,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  logout: {
+    position: 'absolute',
+    bottom: 32,
+    right: 16,
+    fontSize: 18,
+  },
+  btnContainer: { width: '90%' },
 });
 
 export default Home;

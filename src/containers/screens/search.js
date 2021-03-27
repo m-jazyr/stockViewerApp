@@ -1,54 +1,47 @@
 import React, { useState } from 'react';
-import {
-  View,
-  StyleSheet,
-  Button,
-  TextInput,
-  Text,
-  FlatList,
-} from 'react-native';
-import { useDispatch } from 'react-redux';
+import { View, StyleSheet, FlatList } from 'react-native';
+import { SearchBar } from 'react-native-elements';
 import { getSymbols } from '../../api/searchSymbol';
 import { colors } from '../../assets/colors';
-import { logout } from '../../redux/authSlice';
-import { removeValue } from '../../utils/asyncStorage';
-import { USER_KEY } from '../../utils/constants';
+import SymbolItem from '../../components/symbolItem.js';
 
 const Search = ({ navigation }) => {
-  const dispatch = useDispatch();
-  const onLogout = async () => {
-    await removeValue(USER_KEY);
-    dispatch(logout());
-  };
   const [symbols, setSymbols] = useState([]);
+  const [query, setQuery] = useState('');
+  const [loading, setLoading] = useState(false);
   let timer;
-  const fetchSymbols = (query) => {
+  const fetchSymbols = (text) => {
+    if (text === '') {
+      setSymbols([]);
+      return;
+    }
+    setQuery(text);
+    setLoading(true);
     if (timer) {
       clearTimeout(timer);
     }
     timer = setTimeout(async () => {
-      let data = await getSymbols(query);
+      let data = await getSymbols(text);
       setSymbols(data);
+      setLoading(false);
     }, 1500);
   };
   return (
     <View style={styles.container}>
-      <TextInput
-        style={{ backgroundColor: colors.grey1, width: '100%' }}
+      <SearchBar
+        lightTheme
+        containerStyle={styles.searchBox}
         onChangeText={fetchSymbols}
+        showLoading={loading}
+        value={query}
       />
       <FlatList
         data={symbols}
-        style={{height:400}}
+        style={styles.searchBox}
         keyExtractor={(item, index) => String(index)}
-        renderItem={({item}) => {
-          console.log(item);
-          return (
-            <Text>
-              {item['1. symbol']} :: {item['2. name']}
-            </Text>
-          );
-        }}
+        renderItem={({ item }) => (
+          <SymbolItem item={item} navigation={navigation} />
+        )}
       />
     </View>
   );
@@ -58,7 +51,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: colors.white,
+  },
+  searchBox: {
+    width: '100%',
   },
 });
 

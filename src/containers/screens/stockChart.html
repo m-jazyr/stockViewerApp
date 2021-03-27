@@ -9,9 +9,10 @@
   <script src="https://code.highcharts.com/stock/modules/data.js"></script>
   <script>
     window.addEventListener('message', function (stockData) {
+      const test = JSON.parse(stockData.data)
       Highcharts.stockChart('container', {
         title: {
-          text: 'AAPL stock price by minute',
+          text: `${test.symbol} stock chart`,
         },
 
         subtitle: {
@@ -31,10 +32,6 @@
             count: 1,
             text: '1D'
           }, {
-            type: 'week',
-            count: 1,
-            text: '1w'
-          }, {
             type: 'month',
             count: 1,
             text: '1m'
@@ -46,7 +43,7 @@
             type: 'all',
             text: 'All'
           }],
-          selected: 1,
+          selected: 4,
           inputEnabled: false
         },
 
@@ -54,7 +51,7 @@
           {
             name: 'AAPL',
             type: 'area',
-            data: JSON.parse(stockData.data),
+            data: test.chartData,
             gapSize: 5,
             tooltip: {
               valueDecimals: 2,

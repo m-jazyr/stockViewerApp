@@ -3,7 +3,7 @@ import { View, StyleSheet } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { colors } from '../../assets/colors';
 import GoogleLogin from '../../components/googleLogin';
-import { login,unlock } from '../../redux/authSlice';
+import { login, unlock } from '../../redux/authSlice';
 import { storeValue } from '../../utils/asyncStorage';
 import { USER_KEY } from '../../utils/constants';
 

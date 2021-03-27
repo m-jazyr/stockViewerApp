@@ -9,7 +9,6 @@ export const strings = {
   deviceLock: 'Device Lock',
   continue: 'Continue',
   notNow: 'Not Now',
-  cancel:'Cancel',
-  unlockApp: 'Unlock stockViewer'
-
+  cancel: 'Cancel',
+  unlockApp: 'Unlock stockViewer',
 };

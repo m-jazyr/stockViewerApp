@@ -11,5 +11,5 @@ export const images = {
   user,
   touchId,
   success,
-  back
+  back,
 };

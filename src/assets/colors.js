@@ -5,5 +5,4 @@ export const colors = {
   black: 'rgb(0, 0, 0)',
   grey1: 'rgb(100, 100, 100)',
   transparent: 'rgba(255, 255, 255, 0.0)',
-
 };
